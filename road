@@ -1,0 +1,9 @@
+CALLBACK/PROMISE(11/02/2025)
+
+callback => fonction qu'on donne en param à une autre fonction pour executer une instruction
+
+promise => il a trois props qui définissent les etats de notre traitement: pending, result et reject
+new Promise()->
+then -> pending
+result -> success
+catch -> reject
