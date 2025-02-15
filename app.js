@@ -1,10 +1,11 @@
 const fileSystem = require('fs');
 const readline = require('node:readline');
+const events = require('events');
 
-// console.log('Hello Node.js!');
-// console.log('Bienvenu dans mon backend!');
-//
-// /*utiliation des callback*/
+console.log('Hello Node.js!');
+console.log('Bienvenu dans mon backend!');
+
+/*utiliation des callback*/
 // function sumArray(array, callback) {
 //   const sum =  array.reduce((acc, comp) => acc + comp, 0);
 //   callback(sum)
@@ -51,43 +52,68 @@ const readline = require('node:readline');
 // })
 
 /* EXERCICE */
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
+//
+// rl.question(`
+// 1 - Creation
+// 2 - Afficher
+// 3 - Modifier
+// 4 - Supprimer
+// `, name => {
+//     switch (name) {
+//         case "1":
+//             fileSystem.writeFile(
+//                 "./praticeFile", "Create permettant de faire le CRUD d'une tache",
+//                 (err) => {
+//                     if (err) return console.log(err);
+//                 }
+//             )
+//             break
+//         case "2":
+//             fileSystem.readFile("./praticeFile", "utf-8", (err, data) => {
+//                 if (err) return console.log(err);
+//                 console.log(data)
+//             })
+//             break
+//         case "3":
+//             fileSystem.appendFile("./praticeFile", "New line", (err) => {
+//                 if (err) return console.log(err);
+//             })
+//             break;
+//         case "4":
+//             fileSystem.unlink("./praticeFile", (err) => {
+//                 if (err) return console.log(err);
+//             })
+//             break;
+//
+//     }
+//     rl.close();
+// });
+
+const instanceEmitter = new events();
+// instaceEmitter.on('Soirée spéciale', (start, end, product, prixSpe, prix) => {
+//     console.log(
+// `L'évenemence à ${start}h et prend fin à ${end}h\n
+// ****************MENU************
+// Vous aurez les vraies ${product} à ${prixSpe} francs au lieu de ${prix} frnacs`
+//     );
+// });
+//
+// instaceEmitter.emit('Soirée spéciale', 10, 23, 'cuisses de poulets', 200, 500);
+
+instanceEmitter.on("commande", () => {
+    console.log("\n1- Reception de la commande");
+    instanceEmitter.emit("preparation");
+});
+instanceEmitter.on("preparation", () => {
+    console.log("\n2- Préparation de la commande");
+    instanceEmitter.emit("livraison");
+});
+instanceEmitter.on("livraison", () => {
+    console.log("\n3- Livraison de la commande");
 });
 
-rl.question(`
-1 - Creation
-2 - Afficher
-3 - Modifier
-4 - Supprimer   
-`, name => {
-    switch (name) {
-        case "1":
-            fileSystem.writeFile(
-                "./praticeFile", "Create permettant de faire le CRUD d'une tache",
-                (err) => {
-                    if (err) return console.log(err);
-                }
-            )
-            break
-        case "2":
-            fileSystem.readFile("./praticeFile", "utf-8", (err, data) => {
-                if (err) return console.log(err);
-                console.log(data)
-            })
-            break
-        case "3":
-            fileSystem.appendFile("./praticeFile", "New line", (err) => {
-                if (err) return console.log(err);
-            })
-            break;
-        case "4":
-            fileSystem.unlink("./praticeFile", (err) => {
-                if (err) return console.log(err);
-            })
-            break;
-
-    }
-    rl.close();
-});
+instanceEmitter.emit("commande");

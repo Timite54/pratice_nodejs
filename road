@@ -5,9 +5,26 @@ callback => fonction qu'on donne en param à une autre fonction pour executer un
 promise => il a trois props qui définissent les etats de notre traitement: pending, result et reject
 new Promise()->
 then -> pending
-result -> success
+r esult -> success
 catch -> reject
 
 FS &
 > EXERCICE: Gestion de tache
 - Create permettant de faire le CRUD d'une tache
+
+LES EVENEMENT AVEC NODEJS
+ce sont des composants d'action
+pour mettre en place les evenements en nodejs on utilise: New EventEmitter()
+il nous met a disposion deux fonctions pour faire les manipulations qui sont:
+
+> on() => pour debuter l'action
+> Emit() => pour emettre l'action
+
+EXERCICE 1: un restaurant organise une soirée spéciale et annonce une promotion à ses clients.
+Implément cet evenement avec nodejs
+
+EXERCICE 2: Dans un restaurant, quant un client commande:
+- Les serveur prend la commande
+- Le chef prépare le plat
+- Le serveur sert le plat
+Faire cet enchenemnet avec les events
