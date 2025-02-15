@@ -93,7 +93,8 @@ console.log('Bienvenu dans mon backend!');
 //     rl.close();
 // });
 
-const instanceEmitter = new events();
+/*EXERCICE: Gestion des évènement*/
+// const instanceEmitter1 = new events();
 // instaceEmitter.on('Soirée spéciale', (start, end, product, prixSpe, prix) => {
 //     console.log(
 // `L'évenemence à ${start}h et prend fin à ${end}h\n
@@ -104,16 +105,36 @@ const instanceEmitter = new events();
 //
 // instaceEmitter.emit('Soirée spéciale', 10, 23, 'cuisses de poulets', 200, 500);
 
-instanceEmitter.on("commande", () => {
-    console.log("\n1- Reception de la commande");
-    instanceEmitter.emit("preparation");
-});
-instanceEmitter.on("preparation", () => {
-    console.log("\n2- Préparation de la commande");
-    instanceEmitter.emit("livraison");
-});
-instanceEmitter.on("livraison", () => {
-    console.log("\n3- Livraison de la commande");
-});
+// instanceEmitter2 = new events();
+// instanceEmitter2.on("commande", () => {
+//     console.log("\n1- Reception de la commande");
+//     instanceEmitter2.emit("preparation");
+// });
+// instanceEmitter2.on("preparation", () => {
+//     console.log("\n2- Préparation de la commande");
+//     instanceEmitter2.emit("livraison");
+// });
+// instanceEmitter2.on("livraison", () => {
+//     console.log("\n3- Livraison de la commande");
+// });
+// instanceEmitter2.emit("commande");
 
-instanceEmitter.emit("commande");
+/*EXERCICE: Promise avec Async/Await  */
+
+const commandPlat = (plat) => {
+    return new Promise((result, reject) => {
+        if (plat === "viande") {
+            return result();
+        }return reject();
+    })
+}
+const verifyCommand = async (plat) =>{
+    try {
+        await commandPlat(plat);
+        console.log('Le plat est bon : ' + plat);
+    }catch (err) {
+        console.log(err);
+    }
+}
+verifyCommand("viande")
+
