@@ -9,6 +9,5 @@ result -> success
 catch -> reject
 
 FS &
-
-EXERCICE: Gestion de tache
+> EXERCICE: Gestion de tache
 - Create permettant de faire le CRUD d'une tache
